@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Team | mqa.dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:#060912;color:#fff;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 15% 20%,#6c5cff25,transparent 28%),radial-gradient(circle at 85% 30%,#00d9ff18,transparent 25%),radial-gradient(circle at 50% 100%,#8b5cf622,transparent 35%)}
+.grid{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
+.glow{position:fixed;width:300px;height:300px;border-radius:50%;background:#6d5cff20;filter:blur(90px);left:-100px;top:30%;z-index:-1;animation:float 8s ease-in-out infinite}
+.glow2{position:fixed;width:280px;height:280px;border-radius:50%;background:#00d9ff18;filter:blur(90px);right:-100px;bottom:10%;z-index:-1;animation:float2 10s ease-in-out infinite}
+@keyframes float{50%{transform:translate(80px,-60px)}}
+@keyframes float2{50%{transform:translate(-70px,50px)}}
+
+.header{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;background:#060912dd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff0d}
+.logo{font-size:22px;font-weight:800;letter-spacing:-1px}
+.logo span,.gradient{color:#8174ff}
+.back{display:flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid #ffffff14;border-radius:9px;text-decoration:none;color:#aeb4c3;font-size:12px;transition:.3s}
+.back:hover{color:#fff;background:#8174ff15;border-color:#8174ff66;transform:translateX(-3px)}
+
+.hero{text-align:center;padding:90px 20px 55px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:50px;border:1px solid #8174ff45;background:#8174ff0d;color:#aeb3c2;font-size:10px;letter-spacing:1.5px;font-weight:600;animation:fadeUp .7s both}
+.badge i{color:#8174ff}
+.hero h1{font-size:clamp(42px,7vw,76px);line-height:1;letter-spacing:-4px;margin-top:20px;animation:fadeUp .8s .1s both}
+.gradient{background:linear-gradient(90deg,#8c7fff,#36d9ff,#9a7cff);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientMove 4s linear infinite}
+@keyframes gradientMove{to{background-position:200% center}}
+.hero p{max-width:650px;margin:22px auto 0;color:#7f8798;font-size:13px;line-height:1.9;animation:fadeUp .8s .2s both}
+
+.team{max-width:1180px;margin:auto;padding:25px 20px 110px}
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+
+.card{position:relative;display:grid;grid-template-columns:190px 1fr;gap:20px;padding:15px;border:1px solid #ffffff10;background:linear-gradient(145deg,#0c111dcc,#0a0f19dd);border-radius:20px;overflow:hidden;transition:.4s;opacity:0;animation:cardIn .8s forwards}
+.card:nth-child(2){animation-delay:.12s}.card:nth-child(3){animation-delay:.24s}.card:nth-child(4){animation-delay:.36s}
+.card:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#7264ff16;filter:blur(60px);right:-100px;top:-100px;transition:.5s}
+.card:hover{transform:translateY(-8px);border-color:#8174ff55;box-shadow:0 25px 60px #0009,0 0 40px #8174ff0b}
+.card:hover:before{transform:scale(1.6);background:#32dfff18}
+
+.photo{position:relative;height:250px;border-radius:14px;overflow:hidden;background:#111827;border:1px solid #ffffff0d}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,#050810aa,transparent 50%);pointer-events:none}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:.6s}
+.card:hover .photo img{transform:scale(1.07)}
+.number{position:absolute;z-index:2;top:10px;left:10px;padding:6px 9px;border-radius:7px;background:#050810cc;backdrop-filter:blur(10px);border:1px solid #ffffff16;font-size:9px;font-weight:700;color:#9ca3b2}
+
+.info{position:relative;z-index:2;padding:12px 5px;display:flex;flex-direction:column;justify-content:center}
+.role{color:#8276ff;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px}
+.name{font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:5px}
+.bio{font-size:10px;line-height:1.7;color:#747d8f;margin-bottom:15px}
+
+.skills{display:flex;flex-direction:column;gap:9px}
+.skill-head{display:flex;justify-content:space-between;font-size:9px;color:#a4aaba;margin-bottom:4px}
+.skill-head b{color:#fff}
+.bar{height:5px;background:#ffffff0b;border-radius:10px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,#7164ff,#38d9ff);transition:width 1.5s}
+
+.social{display:flex;gap:7px;margin-top:16px}
+.social a{width:31px;height:31px;display:flex;align-items:center;justify-content:center;border-radius:8px;background:#ffffff07;border:1px solid #ffffff0e;color:#8d95a6;text-decoration:none;font-size:11px;transition:.25s}
+.social a:hover{color:#fff;background:#8174ff;border-color:#8174ff;transform:translateY(-3px)}
+
+/* ACTION BUTTONS */
+.actions{display:flex;gap:8px;margin-top:12px}
+.action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 9px;border-radius:8px;text-decoration:none;font-size:9px;font-weight:600;transition:.25s}
+.skill-btn{color:#fff;background:linear-gradient(135deg,#7164ff,#4d42d5);border:1px solid #8174ff55}
+.report-btn{color:#ff9b9b;background:#ff4d4d0d;border:1px solid #ff5b5b33}
+.action-btn:hover{transform:translateY(-3px)}
+.skill-btn:hover{box-shadow:0 8px 20px #7164ff35}
+.report-btn:hover{color:#fff;background:#ff4d4d;border-color:#ff4d4d}
+
+footer{border-top:1px solid #ffffff0c;padding:30px 20px;text-align:center;color:#626b7b;font-size:10px}
+.footer-logo{font-size:19px;font-weight:800;color:#fff;margin-bottom:7px}
+.footer-logo span{color:#8174ff}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+@media(max-width:950px){.team-grid{grid-template-columns:1fr;max-width:700px;margin:auto}}
+@media(max-width:650px){
+.header{height:64px;padding:0 5%}
+.logo{font-size:19px}
+.hero{padding:70px 18px 40px}
+.card{grid-template-columns:130px 1fr;gap:14px;padding:11px}
+.photo{height:210px}
+.name{font-size:20px}
+.bio{font-size:9px}
+}
+@media(max-width:480px){
+.team{padding:20px 13px 80px}
+.card{grid-template-columns:1fr}
+.photo{height:300px}
+.info{padding:10px 5px 5px}
+.hero h1{font-size:42px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<header class="header">
+<div class="logo">mqa<span>.dev</span></div>
+
+<a href="index.html" class="back">
+<i class="fa-solid fa-arrow-left"></i> Back
+</a>
+</header>
+
+<section class="hero">
+
+<div class="badge">
+<i class="fa-solid fa-code"></i>
+THE PEOPLE BEHIND THE WORK
+</div>
+
+<h1>Meet Our <span class="gradient">Team</span></h1>
+
+<p>
+Different skills. Different ideas. One team.
+We build creative digital experiences and turn ideas into real projects.
+</p>
+
+</section>
+
+<section class="team">
+<div class="team-grid">
+
+<!-- WAS -->
+<article class="card">
+
+<div class="photo">
+<img src="https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/46474c20-3699-4897-82ed-41542ea407ef.jpg" alt="Was">
+<div class="number">01</div>
+</div>
+
+<div class="info">
+
+<div class="role">Team Member</div>
+<h2 class="name">Was</h2>
+
+<p class="bio">
+Creative contributor focused on ideas, teamwork and digital projects.
+</p>
+
+<div class="skills">
+<div>
+<div class="skill-head"><span>Creativity</span><b>92%</b></div>
+<div class="bar"><div class="fill" data-width="92"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Teamwork</span><b>88%</b></div>
+<div class="bar"><div class="fill" data-width="88"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Ideas</span><b>90%</b></div>
+<div class="bar"><div class="fill" data-width="90"></div></div>
+</div>
+</div>
+
+<div class="social">
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+<a href="#"><i class="fa-brands fa-youtube"></i></a>
+</div>
+
+<div class="actions">
+<a href="skills.html?member=was" class="action-btn skill-btn">
+<i class="fa-solid fa-chart-simple"></i> Skill
+</a>
+<a href="report.html?member=was" class="action-btn report-btn">
+<i class="fa-solid fa-flag"></i> Report
+</a>
+</div>
+
+</div>
+</article>
+
+
+<!-- MIRAJ -->
+<article class="card">
+
+<div class="photo">
+<img src="https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/ab55bde8-c62c-4fcd-ada1-46408a9dee20.png" alt="Miraj">
+<div class="number">02</div>
+</div>
+
+<div class="info">
+
+<div class="role">Developer</div>
+<h2 class="name">Miraj</h2>
+
+<p class="bio">
+Web developer focused on modern websites, UI design and interactive projects.
+</p>
+
+<div class="skills">
+<div>
+<div class="skill-head"><span>HTML / CSS</span><b>95%</b></div>
+<div class="bar"><div class="fill" data-width="95"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>JavaScript</span><b>90%</b></div>
+<div class="bar"><div class="fill" data-width="90"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Firebase</span><b>86%</b></div>
+<div class="bar"><div class="fill" data-width="86"></div></div>
+</div>
+</div>
+
+<div class="social">
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-github"></i></a>
+<a href="#"><i class="fa-brands fa-youtube"></i></a>
+</div>
+
+<div class="actions">
+<a href="skills.html?member=miraj" class="action-btn skill-btn">
+<i class="fa-solid fa-chart-simple"></i> Skill
+</a>
+<a href="report.html?member=miraj" class="action-btn report-btn">
+<i class="fa-solid fa-flag"></i> Report
+</a>
+</div>
+
+</div>
+</article>
+
+
+<!-- MEMBER 3 -->
+<article class="card">
+
+<div class="photo">
+<img src="https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/64d27a4a-71f4-41a9-a309-6709c69e5620.jpg" alt="Member 3">
+<div class="number">03</div>
+</div>
+
+<div class="info">
+
+<div class="role">Team Member</div>
+<h2 class="name">Member 3</h2>
+
+<p class="bio">
+Creative team member helping with planning, ideas and project development.
+</p>
+
+<div class="skills">
+<div>
+<div class="skill-head"><span>Planning</span><b>85%</b></div>
+<div class="bar"><div class="fill" data-width="85"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Creativity</span><b>89%</b></div>
+<div class="bar"><div class="fill" data-width="89"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Teamwork</span><b>94%</b></div>
+<div class="bar"><div class="fill" data-width="94"></div></div>
+</div>
+</div>
+
+<div class="social">
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+<a href="#"><i class="fa-brands fa-github"></i></a>
+</div>
+
+<div class="actions">
+<a href="skills.html?member=member3" class="action-btn skill-btn">
+<i class="fa-solid fa-chart-simple"></i> Skill
+</a>
+<a href="report.html?member=member3" class="action-btn report-btn">
+<i class="fa-solid fa-flag"></i> Report
+</a>
+</div>
+
+</div>
+</article>
+
+
+<!-- MEMBER 4 -->
+<article class="card">
+
+<div class="photo">
+<img src="https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/110c9265-c978-480d-8962-a628ca5139a0.jpg" alt="Member 4">
+<div class="number">04</div>
+</div>
+
+<div class="info">
+
+<div class="role">Team Member</div>
+<h2 class="name">Member 4</h2>
+
+<p class="bio">
+Creative contributor focused on digital projects and collaboration.
+</p>
+
+<div class="skills">
+<div>
+<div class="skill-head"><span>Design</span><b>87%</b></div>
+<div class="bar"><div class="fill" data-width="87"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Ideas</span><b>91%</b></div>
+<div class="bar"><div class="fill" data-width="91"></div></div>
+</div>
+
+<div>
+<div class="skill-head"><span>Teamwork</span><b>93%</b></div>
+<div class="bar"><div class="fill" data-width="93"></div></div>
+</div>
+</div>
+
+<div class="social">
+<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="#"><i class="fa-brands fa-instagram"></i></a>
+<a href="#"><i class="fa-brands fa-youtube"></i></a>
+</div>
+
+<div class="actions">
+<a href="skills.html?member=member4" class="action-btn skill-btn">
+<i class="fa-solid fa-chart-simple"></i> Skill
+</a>
+<a href="report.html?member=member4" class="action-btn report-btn">
+<i class="fa-solid fa-flag"></i> Report
+</a>
+</div>
+
+</div>
+</article>
+
+</div>
+</section>
+
+<footer>
+<div class="footer-logo">mqa<span>.dev</span></div>
+<p>Built by a team of creators & developers.</p>
+<p style="margin-top:7px">© 2026 mqa.dev · All rights reserved.</p>
+</footer>
+
+<script>
+const cards=document.querySelectorAll(".card");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(!entry.isIntersecting)return;
+
+entry.target.querySelectorAll(".fill").forEach((bar,i)=>{
+setTimeout(()=>{
+bar.style.width=bar.dataset.width+"%";
+},200+i*120);
+});
+
+observer.unobserve(entry.target);
+});
+},{threshold:.25});
+
+cards.forEach(card=>observer.observe(card));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Skills | mqa.dev</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Poppins,sans-serif;
+background:#060912;
+color:#fff;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-5;
+
+background:
+radial-gradient(circle at 15% 20%,#7164ff28,transparent 28%),
+radial-gradient(circle at 85% 30%,#00d9ff1c,transparent 27%),
+radial-gradient(circle at 50% 100%,#8b5cf622,transparent 35%);
+}
+
+.grid{
+position:fixed;
+inset:0;
+z-index:-4;
+
+background-image:
+linear-gradient(#ffffff06 1px,transparent 1px),
+linear-gradient(90deg,#ffffff06 1px,transparent 1px);
+
+background-size:45px 45px;
+
+mask-image:linear-gradient(
+to bottom,
+#000,
+transparent 90%
+);
+}
+
+.glow{
+position:fixed;
+width:320px;
+height:320px;
+border-radius:50%;
+background:#7164ff20;
+filter:blur(100px);
+left:-130px;
+top:25%;
+z-index:-3;
+animation:float 8s ease-in-out infinite;
+}
+
+.glow2{
+position:fixed;
+width:300px;
+height:300px;
+border-radius:50%;
+background:#00d9ff18;
+filter:blur(100px);
+right:-120px;
+bottom:10%;
+z-index:-3;
+animation:float2 10s ease-in-out infinite;
+}
+
+@keyframes float{
+
+50%{
+transform:translate(90px,-60px);
+}
+
+}
+
+@keyframes float2{
+
+50%{
+transform:translate(-70px,50px);
+}
+
+}
+
+/* HEADER */
+
+.header{
+height:72px;
+padding:0 7%;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+position:sticky;
+top:0;
+z-index:100;
+
+background:#060912dd;
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid #ffffff0d;
+}
+
+.logo{
+font-size:22px;
+font-weight:800;
+letter-spacing:-1px;
+}
+
+.logo span{
+color:#8174ff;
+}
+
+.back{
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:9px 15px;
+
+border:1px solid #ffffff14;
+border-radius:9px;
+
+text-decoration:none;
+color:#aeb4c3;
+
+font-size:12px;
+
+transition:.3s;
+}
+
+.back:hover{
+color:#fff;
+background:#8174ff15;
+border-color:#8174ff66;
+transform:translateX(-3px);
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:75px 20px 50px;
+}
+
+.badge{
+display:inline-flex;
+align-items:center;
+gap:8px;
+
+padding:8px 15px;
+
+border-radius:50px;
+
+border:1px solid #8174ff45;
+background:#8174ff0d;
+
+color:#aeb3c2;
+
+font-size:10px;
+letter-spacing:1.5px;
+font-weight:600;
+
+animation:fadeUp .7s both;
+}
+
+.badge i{
+color:#8174ff;
+}
+
+.hero h1{
+font-size:clamp(40px,7vw,68px);
+line-height:1;
+
+letter-spacing:-4px;
+
+margin-top:20px;
+
+animation:fadeUp .8s .1s both;
+}
+
+.gradient{
+background:
+linear-gradient(
+90deg,
+#8c7fff,
+#36d9ff,
+#9a7cff
+);
+
+background-size:200%;
+
+-webkit-background-clip:text;
+background-clip:text;
+
+color:transparent;
+
+animation:gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove{
+
+to{
+background-position:200% center;
+}
+
+}
+
+.hero p{
+max-width:620px;
+
+margin:20px auto 0;
+
+color:#7f8798;
+
+font-size:13px;
+line-height:1.9;
+
+animation:fadeUp .8s .2s both;
+}
+
+/* PROFILE */
+
+.profile{
+max-width:1050px;
+margin:auto;
+
+padding:20px;
+
+animation:profileIn .8s both;
+}
+
+@keyframes profileIn{
+
+from{
+opacity:0;
+transform:translateY(35px) scale(.97);
+}
+
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+position:relative;
+
+padding:32px;
+
+border-radius:24px;
+
+border:1px solid #ffffff12;
+
+background:
+linear-gradient(
+145deg,
+#0d1320ee,
+#080d16ee
+);
+
+box-shadow:
+0 25px 80px #0008;
+
+overflow:hidden;
+}
+
+.profile-card:before{
+content:"";
+
+position:absolute;
+
+width:350px;
+height:350px;
+
+border-radius:50%;
+
+background:#7164ff12;
+
+filter:blur(90px);
+
+right:-170px;
+top:-170px;
+
+pointer-events:none;
+}
+
+/* PROFILE TOP */
+
+.profile-top{
+position:relative;
+
+display:flex;
+align-items:center;
+
+gap:22px;
+
+padding-bottom:28px;
+
+border-bottom:1px solid #ffffff0d;
+}
+
+.avatar{
+width:90px;
+height:90px;
+
+border-radius:22px;
+
+overflow:hidden;
+
+border:2px solid #8174ff66;
+
+background:#111827;
+
+box-shadow:
+0 0 30px #7164ff25;
+
+flex-shrink:0;
+}
+
+.avatar img{
+width:100%;
+height:100%;
+
+object-fit:cover;
+}
+
+.profile-info h2{
+font-size:28px;
+}
+
+.role{
+display:inline-flex;
+
+margin-top:5px;
+
+padding:5px 10px;
+
+border-radius:30px;
+
+background:#8174ff12;
+
+border:1px solid #8174ff30;
+
+color:#9186ff;
+
+font-size:9px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+}
+
+/* OVERALL */
+
+.overall-section{
+position:relative;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:35px 0;
+}
+
+.overall-circle{
+position:relative;
+
+width:180px;
+height:180px;
+}
+
+.overall-circle svg{
+width:180px;
+height:180px;
+
+transform:rotate(-90deg);
+}
+
+.circle-bg{
+fill:none;
+
+stroke:#ffffff0a;
+stroke-width:10;
+}
+
+.circle-progress{
+fill:none;
+
+stroke:url(#gradient);
+
+stroke-width:10;
+
+stroke-linecap:round;
+
+stroke-dasharray:502;
+stroke-dashoffset:502;
+
+transition:
+stroke-dashoffset 2s
+cubic-bezier(.2,.8,.2,1);
+
+filter:
+drop-shadow(0 0 8px #8174ff66);
+}
+
+.circle-content{
+position:absolute;
+
+inset:0;
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+justify-content:center;
+}
+
+.circle-number{
+font-size:32px;
+font-weight:800;
+}
+
+.circle-label{
+font-size:9px;
+
+color:#7f8798;
+
+text-transform:uppercase;
+
+letter-spacing:1.5px;
+}
+
+/* SKILLS */
+
+.skills-title{
+font-size:17px;
+
+margin:10px 0 20px;
+
+display:flex;
+align-items:center;
+
+gap:9px;
+}
+
+.skills-title i{
+color:#8174ff;
+}
+
+.skills-grid{
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:18px;
+}
+
+/* SKILL ITEM */
+
+.skill-card{
+padding:23px 15px;
+
+border-radius:18px;
+
+background:#ffffff05;
+
+border:1px solid #ffffff0b;
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+transition:.3s;
+}
+
+.skill-card:hover{
+transform:translateY(-7px);
+
+border-color:#8174ff45;
+
+background:#8174ff08;
+
+box-shadow:
+0 15px 40px #0006;
+}
+
+/* SKILL CIRCLE */
+
+.skill-circle{
+position:relative;
+
+width:105px;
+height:105px;
+
+margin-bottom:14px;
+}
+
+.skill-circle svg{
+width:105px;
+height:105px;
+
+transform:rotate(-90deg);
+}
+
+.skill-bg{
+fill:none;
+
+stroke:#ffffff0b;
+
+stroke-width:8;
+}
+
+.skill-progress{
+fill:none;
+
+stroke:url(#gradient);
+
+stroke-width:8;
+
+stroke-linecap:round;
+
+stroke-dasharray:264;
+
+stroke-dashoffset:264;
+
+transition:
+stroke-dashoffset 1.7s
+cubic-bezier(.2,.8,.2,1);
+
+filter:
+drop-shadow(0 0 7px #8174ff55);
+}
+
+.skill-circle-content{
+position:absolute;
+
+inset:0;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.skill-number{
+font-size:18px;
+font-weight:800;
+}
+
+.skill-name{
+font-size:12px;
+
+font-weight:600;
+
+color:#c4c9d5;
+}
+
+.skill-sub{
+font-size:9px;
+
+color:#626b7b;
+
+margin-top:3px;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:70px;
+
+padding:30px 20px;
+
+border-top:1px solid #ffffff0c;
+
+text-align:center;
+
+color:#626b7b;
+
+font-size:10px;
+}
+
+.footer-logo{
+font-size:19px;
+
+font-weight:800;
+
+color:#fff;
+
+margin-bottom:7px;
+}
+
+.footer-logo span{
+color:#8174ff;
+}
+
+/* ERROR / EMPTY */
+
+.empty{
+max-width:600px;
+
+margin:30px auto 100px;
+
+padding:45px 25px;
+
+text-align:center;
+
+border-radius:20px;
+
+border:1px solid #ffffff10;
+
+background:#0d1320cc;
+}
+
+.empty i{
+font-size:40px;
+
+color:#8174ff;
+
+margin-bottom:15px;
+}
+
+.empty h2{
+font-size:20px;
+
+margin-bottom:8px;
+}
+
+.empty p{
+color:#747d8d;
+
+font-size:12px;
+
+line-height:1.8;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(25px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.skills-grid{
+grid-template-columns:
+repeat(2,1fr);
+}
+
+}
+
+@media(max-width:520px){
+
+.header{
+height:64px;
+padding:0 5%;
+}
+
+.logo{
+font-size:19px;
+}
+
+.hero{
+padding:65px 18px 40px;
+}
+
+.hero h1{
+letter-spacing:-2px;
+}
+
+.profile{
+padding:12px;
+}
+
+.profile-card{
+padding:22px 16px;
+}
+
+.profile-top{
+gap:14px;
+}
+
+.avatar{
+width:70px;
+height:70px;
+border-radius:17px;
+}
+
+.profile-info h2{
+font-size:22px;
+}
+
+.skills-grid{
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+}
+
+.skill-card{
+padding:18px 8px;
+}
+
+.skill-circle{
+width:90px;
+height:90px;
+}
+
+.skill-circle svg{
+width:90px;
+height:90px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<div class="glow"></div>
+<div class="glow2"></div>
+
+
+<header class="header">
+
+<div class="logo">
+mqa<span>.dev</span>
+</div>
+
+<a href="team.html" class="back">
+<i class="fa-solid fa-arrow-left"></i>
+Team
+</a>
+
+</header>
+
+
+<section class="hero">
+
+<div class="badge">
+<i class="fa-solid fa-chart-simple"></i>
+SKILL ANALYTICS
+</div>
+
+<h1>
+My <span class="gradient">Skills</span>
+</h1>
+
+<p>
+A visual overview of development,
+creative and technical skills.
+</p>
+
+</section>
+
+
+<main id="profileArea"></main>
+
+
+<footer>
+
+<div class="footer-logo">
+mqa<span>.dev</span>
+</div>
+
+<p>
+Built with creativity, code &amp; technology.
+</p>
+
+<p style="margin-top:7px">
+© 2026 mqa.dev · All rights reserved.
+</p>
+
+</footer>
+
+
+<!-- SVG GRADIENT -->
+
+<svg width="0" height="0" style="position:absolute">
+
+<defs>
+
+<linearGradient id="gradient"
+x1="0%"
+y1="0%"
+x2="100%"
+y2="100%">
+
+<stop offset="0%" stop-color="#7164ff"/>
+<stop offset="100%" stop-color="#36d9ff"/>
+
+</linearGradient>
+
+</defs>
+
+</svg>
+
+
+<script>
+
+/* =========================
+   TEAM DATA
+========================= */
+
+const team={
+
+miraj:{
+name:"Miraj",
+role:"Developer",
+image:"https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/ab55bde8-c62c-4fcd-ada1-46408a9dee20.png",
+
+overall:94,
+
+skills:[
+["HTML","fa-brands fa-html5",98,"Web Structure"],
+["CSS","fa-brands fa-css3-alt",96,"UI & Animation"],
+["JavaScript","fa-brands fa-js",93,"Web Logic"],
+["Firebase","fa-solid fa-fire",91,"Backend"],
+["GitHub","fa-brands fa-github",89,"Version Control"],
+["UI Design","fa-solid fa-pen-ruler",92,"Interface Design"]
+]
+
+},
+
+was:{
+name:"Was",
+role:"Creative Member",
+image:"https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/46474c20-3699-4897-82ed-4154",
+
+overall:88,
+
+skills:[
+["Creativity","fa-solid fa-lightbulb",92,"Creative Ideas"],
+["Teamwork","fa-solid fa-people-group",90,"Collaboration"],
+["Design","fa-solid fa-pen-ruler",84,"Visual Design"],
+["Planning","fa-solid fa-list-check",89,"Project Planning"],
+["Ideas","fa-solid fa-brain",91,"Problem Solving"],
+["Communication","fa-solid fa-comments",87,"Communication"]
+]
+
+},
+
+member3:{
+name:"Member 3",
+role:"Team Member",
+
+image:"https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/64d27a4a-71f4-41a9-a309-6709c69e5620.jpg",
+
+overall:86,
+
+skills:[
+["Creativity","fa-solid fa-lightbulb",89,"Creative Ideas"],
+["Planning","fa-solid fa-list-check",85,"Project Planning"],
+["Teamwork","fa-solid fa-people-group",94,"Collaboration"],
+["Communication","fa-solid fa-comments",87,"Communication"],
+["Ideas","fa-solid fa-brain",88,"Problem Solving"],
+["Research","fa-solid fa-magnifying-glass",82,"Research"]
+]
+
+},
+
+member4:{
+name:"Member 4",
+role:"Team Member",
+
+image:"https://i.supaimg.com/bce24f6f-183c-43d4-b3d1-1846c1a0f028/110c9265-c978-480d-8962-a628ca5139a0.jpg",
+
+overall:84,
+
+skills:[
+["Design","fa-solid fa-pen-ruler",87,"Visual Design"],
+["Ideas","fa-solid fa-lightbulb",91,"Creative Ideas"],
+["Teamwork","fa-solid fa-people-group",93,"Collaboration"],
+["Communication","fa-solid fa-comments",86,"Communication"],
+["Planning","fa-solid fa-list-check",84,"Project Planning"],
+["Research","fa-solid fa-magnifying-glass",80,"Research"]
+]
+
+}
+
+};
+
+
+/* =========================
+   GET SELECTED MEMBER
+========================= */
+
+const params=
+new URLSearchParams(
+window.location.search
+);
+
+const memberKey=
+params.get("member");
+
+const profileArea=
+document.getElementById("profileArea");
+
+
+/* =========================
+   SHOW PROFILE
+========================= */
+
+if(!memberKey || !team[memberKey]){
+
+profileArea.innerHTML=`
+
+<div class="empty">
+
+<i class="fa-solid fa-user-slash"></i>
+
+<h2>Select a team member</h2>
+
+<p>
+Open this page from a member's
+Skills button to view their skill profile.
+</p>
+
+</div>
+
+`;
+
+}else{
+
+const person=
+team[memberKey];
+
+let skillsHTML="";
+
+person.skills.forEach((skill,index)=>{
+
+skillsHTML+=`
+
+<div class="skill-card">
+
+<div class="skill-circle">
+
+<svg viewBox="0 0 100 100">
+
+<circle
+class="skill-bg"
+cx="50"
+cy="50"
+r="42">
+</circle>
+
+<circle
+class="skill-progress"
+cx="50"
+cy="50"
+r="42"
+data-value="${skill[2]}"
+style="stroke-dasharray:264;stroke-dashoffset:264">
+</circle>
+
+</svg>
+
+<div class="skill-circle-content">
+
+<span
+class="skill-number"
+data-number="${skill[2]}">
+0%
+</span>
+
+</div>
+
+</div>
+
+<div class="skill-name">
+<i class="${skill[1]}"></i>
+${skill[0]}
+</div>
+
+<div class="skill-sub">
+${skill[3]}
+</div>
+
+</div>
+
+`;
+
+});
+
+
+profileArea.innerHTML=`
+
+<section class="profile">
+
+<div class="profile-card">
+
+<div class="profile-top">
+
+<div class="avatar">
+
+<img
+src="${person.image}"
+alt="${person.name}">
+
+</div>
+
+<div class="profile-info">
+
+<h2>${person.name}</h2>
+
+<span class="role">
+${person.role}
+</span>
+
+</div>
+
+</div>
+
+
+<div class="overall-section">
+
+<div class="overall-circle">
+
+<svg viewBox="0 0 180 180">
+
+<circle
+class="circle-bg"
+cx="90"
+cy="90"
+r="80">
+</circle>
+
+<circle
+class="circle-progress"
+cx="90"
+cy="90"
+r="80">
+</circle>
+
+</svg>
+
+<div class="circle-content">
+
+<span
+class="circle-number"
+id="overallNumber">
+0%
+</span>
+
+<span class="circle-label">
+Overall
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<h3 class="skills-title">
+
+<i class="fa-solid fa-code"></i>
+
+Technical &amp; Creative Skills
+
+</h3>
+
+
+<div class="skills-grid">
+
+${skillsHTML}
+
+</div>
+
+</div>
+
+</section>
+
+`;
+
+
+/* =========================
+   OVERALL ANIMATION
+========================= */
+
+setTimeout(()=>{
+
+const overallCircle=
+document.querySelector(
+".circle-progress"
+);
+
+const circumference=
+2*Math.PI*80;
+
+overallCircle.style.strokeDasharray=
+circumference;
+
+overallCircle.style.strokeDashoffset=
+circumference;
+
+setTimeout(()=>{
+
+overallCircle.style.strokeDashoffset=
+circumference -
+(circumference*person.overall/100);
+
+},250);
+
+
+animateNumber(
+document.getElementById("overallNumber"),
+person.overall,
+1800
+);
+
+
+/* =========================
+   SKILL CIRCLES
+========================= */
+
+const skillCircles=
+document.querySelectorAll(
+".skill-progress"
+);
+
+const skillNumbers=
+document.querySelectorAll(
+".skill-number"
+);
+
+skillCircles.forEach((circle,index)=>{
+
+const value=
+Number(circle.dataset.value);
+
+const circumference=
+2*Math.PI*42;
+
+circle.style.strokeDasharray=
+circumference;
+
+circle.style.strokeDashoffset=
+circumference;
+
+setTimeout(()=>{
+
+circle.style.strokeDashoffset=
+circumference -
+(circumference*value/100);
+
+},400+(index*130));
+
+
+setTimeout(()=>{
+
+animateNumber(
+skillNumbers[index],
+value,
+1300
+);
+
+},400+(index*130));
+
+});
+
+},150);
+
+
+/* =========================
+   NUMBER ANIMATION
+========================= */
+
+function animateNumber(
+element,
+target,
+duration
+){
+
+let start=0;
+
+const startTime=
+performance.now();
+
+function update(time){
+
+const progress=
+Math.min(
+(time-startTime)/duration,
+1
+);
+
+const eased=
+1-Math.pow(1-progress,3);
+
+const value=
+Math.round(
+start+
+(target-start)*eased
+);
+
+element.textContent=
+value+"%";
+
+if(progress<1){
+
+requestAnimationFrame(update);
+
+}
+
+}
+
+requestAnimationFrame(update);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

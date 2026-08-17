@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Report | mqa.dev</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:Poppins,sans-serif;
+    color:#fff;
+    background:#060912;
+    overflow-x:hidden;
+}
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+        radial-gradient(circle at 15% 20%,#6c5cff25,transparent 28%),
+        radial-gradient(circle at 85% 25%,#00d9ff18,transparent 25%),
+        radial-gradient(circle at 50% 100%,#8b5cf622,transparent 35%);
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-image:
+        linear-gradient(#ffffff06 1px,transparent 1px),
+        linear-gradient(90deg,#ffffff06 1px,transparent 1px);
+    background-size:45px 45px;
+    mask-image:linear-gradient(to bottom,#000,transparent 90%);
+}
+
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:#6d5cff20;
+    filter:blur(90px);
+    left:-100px;
+    top:30%;
+    z-index:-1;
+    animation:float 8s ease-in-out infinite;
+}
+
+.glow2{
+    position:fixed;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:#00d9ff18;
+    filter:blur(90px);
+    right:-100px;
+    bottom:10%;
+    z-index:-1;
+    animation:float2 10s ease-in-out infinite;
+}
+
+@keyframes float{
+    50%{transform:translate(80px,-60px)}
+}
+
+@keyframes float2{
+    50%{transform:translate(-70px,50px)}
+}
+
+/* HEADER */
+
+.header{
+    height:72px;
+    padding:0 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#060912dd;
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #ffffff0d;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:#8174ff;
+}
+
+.back{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 15px;
+    border:1px solid #ffffff14;
+    border-radius:9px;
+    text-decoration:none;
+    color:#aeb4c3;
+    font-size:12px;
+    transition:.3s;
+}
+
+.back:hover{
+    color:#fff;
+    background:#8174ff15;
+    border-color:#8174ff66;
+    transform:translateX(-3px);
+}
+
+/* MAIN */
+
+.container{
+    width:min(700px,92%);
+    margin:auto;
+    padding:80px 0 100px;
+}
+
+.badge{
+    width:max-content;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 15px;
+    border-radius:50px;
+    border:1px solid #8174ff45;
+    background:#8174ff0d;
+    color:#aeb3c2;
+    font-size:10px;
+    letter-spacing:1.5px;
+    font-weight:600;
+    animation:fadeUp .7s both;
+}
+
+.badge i{
+    color:#8174ff;
+}
+
+h1{
+    text-align:center;
+    font-size:clamp(40px,7vw,65px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin-top:22px;
+    animation:fadeUp .8s .1s both;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#8c7fff,#36d9ff,#9a7cff);
+    background-size:200%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove{
+    to{background-position:200% center}
+}
+
+.subtitle{
+    text-align:center;
+    max-width:570px;
+    margin:20px auto 35px;
+    color:#7f8798;
+    font-size:13px;
+    line-height:1.9;
+    animation:fadeUp .8s .2s both;
+}
+
+/* FORM */
+
+.form-box{
+    position:relative;
+    padding:28px;
+    border:1px solid #ffffff10;
+    border-radius:20px;
+    background:linear-gradient(145deg,#0c111dcc,#0a0f19dd);
+    box-shadow:0 25px 70px #0008;
+    animation:boxIn .8s .25s both;
+    overflow:hidden;
+}
+
+.form-box:before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:#7164ff16;
+    filter:blur(70px);
+    right:-100px;
+    top:-100px;
+    pointer-events:none;
+}
+
+.field{
+    position:relative;
+    z-index:2;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    color:#b5bbca;
+    font-size:11px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+label i{
+    color:#8174ff;
+    margin-right:5px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    border:1px solid #ffffff12;
+    outline:none;
+    border-radius:10px;
+    background:#ffffff06;
+    color:#fff;
+    font-family:Poppins,sans-serif;
+    font-size:12px;
+    padding:12px 13px;
+    transition:.25s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#8174ff80;
+    background:#8174ff08;
+    box-shadow:0 0 0 3px #8174ff12;
+}
+
+input[readonly]{
+    color:#aeb5c4;
+    cursor:not-allowed;
+}
+
+select{
+    cursor:pointer;
+}
+
+select option{
+    background:#0b101b;
+    color:#fff;
+}
+
+textarea{
+    min-height:150px;
+    resize:vertical;
+    line-height:1.7;
+}
+
+.counter{
+    text-align:right;
+    color:#596274;
+    font-size:9px;
+    margin-top:5px;
+}
+
+/* BUTTON */
+
+.submit-btn{
+    position:relative;
+    z-index:2;
+    width:100%;
+    border:0;
+    border-radius:10px;
+    padding:13px;
+    color:#fff;
+    background:linear-gradient(135deg,#7164ff,#4d42d5);
+    font-family:Poppins,sans-serif;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 10px 30px #7164ff20;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 35px #7164ff35;
+}
+
+.submit-btn:active{
+    transform:scale(.98);
+}
+
+.submit-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+/* MESSAGE */
+
+.message{
+    position:relative;
+    z-index:2;
+    display:none;
+    margin-top:16px;
+    padding:12px;
+    border-radius:9px;
+    text-align:center;
+    font-size:11px;
+}
+
+.success{
+    display:block;
+    color:#7ff0b4;
+    background:#22c55e10;
+    border:1px solid #22c55e30;
+}
+
+.error{
+    display:block;
+    color:#ff9b9b;
+    background:#ff4d4d0d;
+    border:1px solid #ff5b5b30;
+}
+
+.notice{
+    position:relative;
+    z-index:2;
+    margin-top:18px;
+    padding:12px;
+    border-radius:9px;
+    background:#ffffff04;
+    border:1px solid #ffffff08;
+    color:#626b7b;
+    font-size:9px;
+    line-height:1.7;
+    text-align:center;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #ffffff0c;
+    padding:30px 20px;
+    text-align:center;
+    color:#626b7b;
+    font-size:10px;
+}
+
+.footer-logo{
+    font-size:19px;
+    font-weight:800;
+    color:#fff;
+    margin-bottom:7px;
+}
+
+.footer-logo span{
+    color:#8174ff;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes boxIn{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@media(max-width:600px){
+
+    .header{
+        height:64px;
+        padding:0 5%;
+    }
+
+    .logo{
+        font-size:19px;
+    }
+
+    .container{
+        padding:65px 0 80px;
+    }
+
+    .form-box{
+        padding:20px;
+    }
+
+    h1{
+        letter-spacing:-2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<header class="header">
+
+    <div class="logo">
+        mqa<span>.dev</span>
+    </div>
+
+    <a href="team.html" class="back">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back
+    </a>
+
+</header>
+
+<main class="container">
+
+    <div class="badge">
+        <i class="fa-solid fa-flag"></i>
+        TEAM REPORT
+    </div>
+
+    <h1>
+        Submit a <span class="gradient">Report</span>
+    </h1>
+
+    <p class="subtitle">
+        Found a problem, need an upgrade, or have an idea?
+        Send a report to the mqa.dev team.
+    </p>
+
+    <form id="reportForm" class="form-box">
+
+        <div class="field">
+
+            <label>
+                <i class="fa-solid fa-user"></i>
+                Member
+            </label>
+
+            <input
+                type="text"
+                id="member"
+                readonly
+                value="Unknown"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                <i class="fa-solid fa-layer-group"></i>
+                Report Type
+            </label>
+
+            <select id="type" required>
+
+                <option value="" disabled selected>
+                    Select report type
+                </option>
+
+                <option value="Upgrade">
+                    Upgrade
+                </option>
+
+                <option value="Fix">
+                    Fix
+                </option>
+
+                <option value="Remake">
+                    Remake
+                </option>
+
+                <option value="Bug">
+                    Bug
+                </option>
+
+                <option value="Suggestion">
+                    Suggestion
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                <i class="fa-solid fa-message"></i>
+                Report Details
+            </label>
+
+            <textarea
+                id="report"
+                maxlength="1000"
+                placeholder="Write your report here..."
+                required
+            ></textarea>
+
+            <div class="counter">
+                <span id="count">0</span>/1000
+            </div>
+
+        </div>
+
+        <button
+            type="submit"
+            class="submit-btn"
+            id="submitBtn">
+
+            <i class="fa-brands fa-discord"></i>
+            Submit Report
+
+        </button>
+
+        <div id="message" class="message"></div>
+
+        <div class="notice">
+            Reports are sent to the mqa.dev team Discord channel.
+            Please don't submit spam or unnecessary reports.
+        </div>
+
+    </form>
+
+</main>
+
+<footer>
+
+    <div class="footer-logo">
+        mqa<span>.dev</span>
+    </div>
+
+    <p>
+        Built by a team of creators & developers.
+    </p>
+
+    <p style="margin-top:7px">
+        © 2026 mqa.dev · All rights reserved.
+    </p>
+
+</footer>
+
+<script>
+
+/* =========================================
+   DISCORD WEBHOOK
+   ========================================= */
+
+const DISCORD_WEBHOOK =
+"https://discord.com/api/webhooks/1538835672247304202/UiZR4Y50vC6ZNVGhVeAcqF5rI453KfiPRW1r3j5HXyW0YTLf1bQduy3gw2IiyqrARBVe";
+
+
+/* =========================================
+   MEMBER FROM URL
+   ========================================= */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const memberParam =
+params.get("member");
+
+const memberInput =
+document.getElementById("member");
+
+const memberNames = {
+
+    was:"Was",
+
+    miraj:"Miraj",
+
+    member3:"Member 3",
+
+    member4:"Member 4"
+
+};
+
+memberInput.value =
+memberNames[memberParam] ||
+"Unknown";
+
+
+/* =========================================
+   CHARACTER COUNTER
+   ========================================= */
+
+const reportInput =
+document.getElementById("report");
+
+const count =
+document.getElementById("count");
+
+reportInput.addEventListener(
+"input",
+()=>{
+
+    count.textContent =
+    reportInput.value.length;
+
+});
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+const form =
+document.getElementById("reportForm");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const message =
+document.getElementById("message");
+
+
+form.addEventListener(
+"submit",
+async e=>{
+
+    e.preventDefault();
+
+    const member =
+    memberInput.value;
+
+    const type =
+    document.getElementById("type").value;
+
+    const report =
+    reportInput.value.trim();
+
+
+    if(!type || !report){
+
+        message.textContent =
+        "Please select a report type and write your report.";
+
+        message.className =
+        "message error";
+
+        return;
+
+    }
+
+
+    if(
+        DISCORD_WEBHOOK ===
+        "YOUR_DISCORD_WEBHOOK_URL"
+    ){
+
+        message.textContent =
+        "Discord webhook is not configured yet.";
+
+        message.className =
+        "message error";
+
+        return;
+
+    }
+
+
+    submitBtn.disabled = true;
+
+    submitBtn.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+
+    const now =
+    new Date();
+
+
+    const time =
+    now.toLocaleString(
+        "en-BD",
+        {
+            dateStyle:"medium",
+            timeStyle:"short"
+        }
+    );
+
+
+    const payload = {
+
+        username:
+        "mqa.dev Reports",
+
+        avatar_url:
+        "https://cdn.discordapp.com/embed/avatars/0.png",
+
+        embeds:[{
+
+            title:
+            "🚨 New Team Report",
+
+            color:
+            0x8174ff,
+
+            fields:[
+
+                {
+                    name:"👤 Member",
+                    value:
+                    member,
+                    inline:true
+                },
+
+                {
+                    name:"🏷️ Type",
+                    value:
+                    type,
+                    inline:true
+                },
+
+                {
+                    name:"📝 Report",
+                    value:
+                    report.slice(0,1024)
+                },
+
+                {
+                    name:"🕐 Time",
+                    value:
+                    time,
+                    inline:false
+                }
+
+            ],
+
+            footer:{
+                text:
+                "mqa.dev • Team Report System"
+            },
+
+            timestamp:
+            now.toISOString()
+
+        }]
+
+    };
+
+
+    try{
+
+        const response =
+        await fetch(
+            DISCORD_WEBHOOK,
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:
+                JSON.stringify(payload)
+            }
+        );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Discord request failed"
+            );
+
+        }
+
+
+        message.textContent =
+        "✅ Report sent successfully to Discord!";
+
+        message.className =
+        "message success";
+
+
+        form.reset();
+
+        memberInput.value =
+        memberNames[memberParam] ||
+        "Unknown";
+
+        count.textContent =
+        "0";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        message.textContent =
+        "❌ Report could not be sent. Please try again.";
+
+        message.className =
+        "message error";
+
+    }
+
+
+    submitBtn.disabled =
+    false;
+
+    submitBtn.innerHTML =
+    '<i class="fa-brands fa-discord"></i> Submit Report';
+
+});
+
+</script>
+
+</body>
+</html>
